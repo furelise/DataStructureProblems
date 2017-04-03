@@ -1,0 +1,49 @@
+//Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. 
+//Return the sum of the three integers.
+
+//Assume that there will only be one solution
+
+
+
+public class Solution {
+	public int threeSumClosest(ArrayList<Integer> a, int b) {
+	      int closestSum=0;int sum=0;
+	    if(a.size()<=3){
+	        
+	        for(int i=0;i<a.size();i++){
+	           sum+=a.get(i) ;
+	        }
+	        return sum;
+	    }
+	  
+	    Collections.sort(a);
+	
+	    for(int i=0;i<a.size()-2;i++){
+	       int first=a.get(i) ;
+	       
+	       int j=i+1;
+	       int k=a.size()-1;
+	       while(j<k){
+	           
+	           sum=first+a.get(j)+a.get(k);
+	           if(i==0&&j==i+1&&k==a.size()-1){
+	                closestSum = sum;
+	           }
+	           if (Math.abs(b - closestSum) > Math.abs(b - sum)) 
+                    closestSum = sum;
+	           if(sum>b)
+	            k--;
+	            if(sum<b)
+	            j++;
+	            
+	            if(sum==b)
+	            break;
+	            
+	             
+	       }
+	       
+	        
+	    }
+	    return closestSum;
+	}
+}
